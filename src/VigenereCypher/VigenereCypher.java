@@ -5,9 +5,9 @@ import java.util.Scanner;
 public class VigenereCypher {
     /*
         To encrypt easily we can turn a string into a number array                       x
-        ask if the keywords are case-sensitive
-        add the value of the keyword code to the plaintext (loop any overlap) to encrypt
-        subtract the value of the keyword code to the encrypted text to decrypt
+        ask if the keywords are case-sensitive                                           
+        add the value of the keyword code to the plaintext (loop any overlap) to encrypt x
+        subtract the value of the keyword code to the encrypted text to decrypt          x
         return int array to characters and print it out                                  x
      */
 
