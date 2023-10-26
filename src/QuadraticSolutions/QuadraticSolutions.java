@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class QuadraticSolutions {
-
     public static void main(String[] args) {
         Scanner keyb = new Scanner(System.in);
 
