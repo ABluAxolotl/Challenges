@@ -1,41 +1,6 @@
 package VigenereCypher;
 
-import java.util.Scanner;
-
-public class VigenereCypher {
-    /*
-        To encrypt easily we can turn a string into a number array                       x
-        ask if the keywords are case-sensitive                                           
-        add the value of the keyword code to the plaintext (loop any overlap) to encrypt x
-        subtract the value of the keyword code to the encrypted text to decrypt          x
-        return int array to characters and print it out                                  x
-     */
-
-    public static void main(String[] args) {
-        Scanner keyb = new Scanner(System.in);
-
-        System.out.print("Encrypting? (Y/N): ");
-        char y = keyb.next().toUpperCase().charAt(0);
-        if (y == 'Y') {
-            System.out.print("Enter the word to encrypt: ");
-            String plainText = keyb.next();
-            System.out.print("Enter the key to encrypt: ");
-            String keyWord = keyb.next();
-
-            String encrypted = vEncrypt(plainText, keyWord);
-
-            System.out.println(plainText + " encrypted with the keyword " + keyWord + " is --> " + encrypted);
-        } else if (y == 'N') {
-            System.out.print("Enter the word to decrypt: ");
-            String encrypted = keyb.next();
-            System.out.print("Enter the key to decrypt: ");
-            String keyWord = keyb.next();
-
-            String decrypted = vDecrypt(encrypted, keyWord);
-
-            System.out.println(encrypted + " decrypted with the keyword " + keyWord + " is --> " + decrypted);
-        }
-    }
+public class VigenereCypherManipulator {
 
     public static String vEncrypt(String word, String key) {
         word = word.toUpperCase();
