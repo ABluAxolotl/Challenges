@@ -6,11 +6,9 @@ import java.awt.event.*;
 import java.util.Random;
 
 public class SalaryCalculatorFrame extends JFrame implements ActionListener {
-  private JLabel wageLabel, hoursLabel, salaryLabel, funLabel;
+  private JLabel wageLabel, hoursLabel, salaryLabel;
   private JTextField wageInput, hoursInput, salaryField;
   private JButton calculateButton;
-
-  String[] strings = new String[]{"Woo!", "This is fun", "Howdy!", "MC Splash text"};
 
   public static void main(String[] args) {
     int WIDTH = 320;
@@ -20,72 +18,50 @@ public class SalaryCalculatorFrame extends JFrame implements ActionListener {
 
   public SalaryCalculatorFrame(int WIDTH, int HEIGHT) {
     setTitle("Yearly Salary Calculator");
-    setLocationRelativeTo((Component)null);
+    setLocationRelativeTo(null);
     getContentPane().setBackground(new Color(0, 136, 170));
-    GridBagConstraints layout = null;
 
     //Labels
     wageLabel = new JLabel("Hourly Wage: ");
     hoursLabel = new JLabel("Hours Per Week: ");
     salaryLabel = new JLabel("Yearly Salary: ");
-    funLabel = new JLabel(this.getRandomString());
 
+    wageInput = new JTextField(15);
+    wageInput.setEditable(true);
+    wageInput.setText("0");
 
-    this.wageInput = new JTextField(15);
-    this.wageInput.setEditable(true);
-    this.wageInput.setText("0");
-    this.hoursInput = new JTextField(15);
-    this.hoursInput.setEditable(true);
-    this.hoursInput.setText("40");
-    this.salaryField = new JTextField(15);
-    this.salaryField.setEditable(false);
-    this.calculateButton = new JButton("Calculate");
-    this.calculateButton.addActionListener(this);
-    this.setLayout(new GridBagLayout());
-    layout = new GridBagConstraints();
-    layout.gridx = 0;
-    layout.gridy = 0;
-    layout.insets = new Insets(10, 10, 10, 10);
-    this.add(this.wageLabel, layout);
-    layout = new GridBagConstraints();
-    layout.gridx = 1;
-    layout.gridy = 0;
-    layout.insets = new Insets(10, 10, 10, 10);
-    this.add(this.wageInput, layout);
-    layout = new GridBagConstraints();
-    layout.gridx = 0;
-    layout.gridy = 1;
-    layout.insets = new Insets(10, 10, 10, 10);
-    this.add(this.hoursLabel, layout);
-    layout = new GridBagConstraints();
-    layout.gridx = 1;
-    layout.gridy = 1;
-    layout.insets = new Insets(10, 10, 10, 10);
-    this.add(this.hoursInput, layout);
-    layout = new GridBagConstraints();
-    layout.gridx = 0;
-    layout.gridy = 2;
-    layout.insets = new Insets(10, 10, 10, 10);
-    this.add(this.salaryLabel, layout);
-    layout = new GridBagConstraints();
-    layout.gridx = 1;
-    layout.gridy = 2;
-    layout.insets = new Insets(10, 10, 10, 10);
-    this.add(this.salaryField, layout);
-    layout = new GridBagConstraints();
-    layout.gridx = 0;
-    layout.gridy = 3;
-    layout.insets = new Insets(10, 10, 10, 10);
-    this.add(this.calculateButton, layout);
-    layout = new GridBagConstraints();
-    layout.gridx = 1;
-    layout.gridy = 3;
-    layout.insets = new Insets(10, 10, 10, 10);
-    this.add(this.fun, layout);
-    this.pack();
-    this.setSize(WIDTH, HEIGHT);
-    this.setDefaultCloseOperation(3);
-    this.setVisible(true);
+    hoursInput = new JTextField(15);
+    hoursInput.setEditable(true);
+    hoursInput.setText("40");
+
+    salaryField = new JTextField(15);
+    salaryField.setEditable(false);
+
+    calculateButton = new JButton("Calculate");
+    calculateButton.addActionListener(this);
+
+    Insets insets = new Insets(10, 10, 10, 10);
+
+    setLayout(new GridBagLayout());
+    addToGrid(0, 0, insets, wageLabel);
+    addToGrid(1, 0, insets, wageInput);
+    addToGrid(0, 1, insets, hoursLabel);
+    addToGrid(1, 1, insets, hoursInput);
+    addToGrid(0, 2, insets, salaryLabel);
+    addToGrid(1, 2, insets, salaryField);
+    addToGrid(0, 3, insets, calculateButton);
+
+    pack();
+    setDefaultCloseOperation(EXIT_ON_CLOSE);
+    setVisible(true);
+  }
+
+  public void addToGrid(int x, int y, Insets insets, JComponent component) {
+    GridBagConstraints layout = new GridBagConstraints();
+    layout.gridx = x;
+    layout.gridy = y;
+    layout.insets = insets;
+    add(component, layout);
   }
 
   public void actionPerformed(ActionEvent e) {
@@ -93,12 +69,7 @@ public class SalaryCalculatorFrame extends JFrame implements ActionListener {
     String hours = this.hoursInput.getText();
     int hourly = Integer.parseInt(wage);
     int perWeek = Integer.parseInt(hours);
-    this.fun.setText(this.getRandomString());
     this.salaryField.setText(Integer.toString(hourly * perWeek * 50));
   }
 
-  public String getRandomString() {
-    Random rng = new Random();
-    return this.strings[Math.abs(rng.nextInt()) % this.strings.length];
-  }
 }
