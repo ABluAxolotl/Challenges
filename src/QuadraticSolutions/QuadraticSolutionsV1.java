@@ -3,7 +3,7 @@ package QuadraticSolutions;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class QuadraticSolutions {
+public class QuadraticSolutionsV1 {
     public static void main(String[] args) {
         Scanner keyb = new Scanner(System.in);
 
