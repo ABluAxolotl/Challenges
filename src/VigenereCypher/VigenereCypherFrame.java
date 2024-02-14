@@ -11,7 +11,6 @@ public class VigenereCypherFrame extends JFrame implements ActionListener {
 	private JTextField inputField, keywordField, outputField;
 
 	public VigenereCypherFrame(int WIDTH, int HEIGHT) {
-		GridBagConstraints layout = null;
 		setTitle("Vigenere Cypher Encoder & Decoder");
 
 		inputLabel = new JLabel("Text:");
