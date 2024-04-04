@@ -2,6 +2,7 @@ package QuadraticSolutions;
 
 import java.util.Scanner;
 
+//
 public class QuadraticSolutionsV2 {
     public static void main(String[] args) {
         Scanner keyb = new Scanner(System.in);
@@ -43,7 +44,7 @@ public class QuadraticSolutionsV2 {
             }
             case 2 -> {
                 double value = Math.sqrt(getDiscriminant(a, b, c));
-                solutions = new double[1];
+                solutions = new double[2];
                 solutions[0] = (-b - value) / (2 * a);
                 solutions[1] = (-b + value) / (2 * a);
                 return solutions;
